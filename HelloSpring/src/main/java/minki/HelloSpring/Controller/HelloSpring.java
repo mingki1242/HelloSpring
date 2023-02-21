@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloSpring {
-    //hello 라는 html에 들어가서 data항복을 helloSpring으로 변경
+    //hello 라는 html에 들어가서 data항목을 helloSpring으로 변경
     @GetMapping("hello")
     public String Hello(Model model)
     {
