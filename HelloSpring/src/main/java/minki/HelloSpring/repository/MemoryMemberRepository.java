@@ -1,4 +1,4 @@
-package minki.HelloSpring.repository;
+/*package minki.HelloSpring.repository;
 
 import minki.HelloSpring.domain.Member;
 import org.springframework.stereotype.Repository;
@@ -34,4 +34,4 @@ public class MemoryMemberRepository implements MemberRepository{
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
     }
-}
+}*/

@@ -1,40 +1,50 @@
 package minki.HelloSpring.Service;
 import minki.HelloSpring.domain.Member;
+import minki.HelloSpring.repository.JpaMemberRepository;
+
 import minki.HelloSpring.repository.MemberRepository;
-import minki.HelloSpring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+@Transactional
 //@Service
 public class MemberService {
-    private final MemberRepository memberRepository;
+    private final MemberRepository jpamemberRepository;
     @Autowired
-    public MemberService(MemberRepository memberRepository)
+    public MemberService(MemberRepository jpamemberRepository)
     {
-        this.memberRepository = memberRepository;
+        this.jpamemberRepository = jpamemberRepository;
     }
 
     //회원가입
+
     public Long Join(Member member)
     {
-        memberRepository.findByName(member.getName())
+        jpamemberRepository.findByName(member.getName())
                 .ifPresent(m->
                 { throw new IllegalStateException("이미 존재하는 회원입니다!!");
         });
-        memberRepository.save(member);
+        jpamemberRepository.save(member);
         return member.getId();
     }
 
     //전체회원조회
     public List<Member> findMembers()
     {
-        return memberRepository.findAll();
+        return jpamemberRepository.findAll();
     }
 
     public Optional<Member> findOne(Long memberId)
     {
-        return memberRepository.findById(memberId);
+        return jpamemberRepository.findById(memberId);
     }
 
 
