@@ -31,7 +31,7 @@ public class JpaMemberRepository implements MemberRepository{
     @Override
     public Optional<Member> findByName(String name) {
         //쿼리를 적고 이름 같은것을
-        List<Member> result=  em.createQuery("select m from MEMBER m where m.name = name",Member.class)
+        List<Member> result=  em.createQuery("select m from Member m where m.name = : name",Member.class)
                 .setParameter("name" , name)
                 .getResultList();
         return result.stream().findAny();
