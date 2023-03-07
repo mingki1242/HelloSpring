@@ -41,7 +41,7 @@ public class MemberService {
     {
         return jpamemberRepository.findAll();
     }
-
+    //회원 찾기
     public Optional<Member> findOne(Long memberId)
     {
         return jpamemberRepository.findById(memberId);
